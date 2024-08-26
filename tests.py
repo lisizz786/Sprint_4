@@ -19,7 +19,7 @@ class TestBooksCollector:
 
         # проверяем, что добавилось именно две
         # словарь books_rating, который нам возвращает метод get_books_rating, имеет длину 2
-        assert len(collector.get_books_rating()) == 2
+        assert len(collector.get_books_genre()) == 2
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
@@ -55,7 +55,6 @@ class TestBooksCollector:
     def test_add_book_in_favorites(self):
         collector = BooksCollector()
         collector.add_new_book('Charmed')
-        collector.set_book_genre('Charmed', 'Фантастика')
         collector.add_book_in_favorites('Charmed')
         assert 'Charmed' in collector.get_list_of_favorites_books()
 
@@ -130,13 +129,13 @@ def test_get_books_genre(books_and_genres, expected_books_genre):
 @pytest.mark.parametrize("book_name, genre, expected_genre", [
     ("Charmed", "Фантастика", "Фантастика"),
     ("The Shining", "", ""),
-    ("None Book", None, None)
 ])
-def test_get_book_genre(book_name, genre, expected_genre):
+def test_get_book_genre_with_genre(book_name, genre, expected_genre):
     collector = BooksCollector()
-    if book_name != "None Book":
-        collector.add_new_book(book_name)
-        if genre is not None:
-            collector.set_book_genre(book_name, genre)
-
+    collector.add_new_book(book_name)
+    collector.set_book_genre(book_name, genre)
     assert collector.get_book_genre(book_name) == expected_genre
+
+def test_get_book_genre_for_nonexistent_book():
+    collector = BooksCollector()
+    assert collector.get_book_genre("None Book") is None
