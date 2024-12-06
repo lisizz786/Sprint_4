@@ -28,13 +28,3 @@
 ```bash
 pytest -v test 
 ```
-### Оценка покрытия
-```bash
-pytest --cov=main
-```
-### Подробная оценка покрытия, после запуска смотреть файл [main_py.html](htmlcov/main_py.html)
-```bash
-pytest --cov=main --cov-report=html
-```
-
-p.s Добавлен бот комментатор который пишет покрытие в пулл реквест
