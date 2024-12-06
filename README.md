@@ -18,11 +18,10 @@
     - `delete_book_from_favorites` — удаляет книгу из избранного.
     - `get_list_of_favorites_books` — получает список избранных книг.
 
-Для каждого из методов были написаны тесты. Тесты  лежат в файле [test_tests.py](test/test_tests.py)
+Для каждого из методов были написаны тесты [test_tests.py](test/test_tests.py)
 
 В тестах используются такие методы как `@pytest.fixture` , `@pytest.mark.parametrize`
 
-В файле [conftest.py](conftest.py) лежит фикстура на создание обьекта класса `BooksCollector`
 
 ### Запустить все тесты
 ```bash
